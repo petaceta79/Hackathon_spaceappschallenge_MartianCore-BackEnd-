@@ -1,18 +1,50 @@
 # MartianCore Assistant
 
-Este proyecto implementa **el backend** de un asistente para la vida en Marte.  
-Recibe preguntas del usuario (por ejemplo: *"¿Está lloviendo afuera?"* o *"Qué temperatura hay?"*), selecciona la función más adecuada y genera una respuesta clara y útil usando **modelos de lenguaje de Hugging Face (FLAN-T5)**.
+**MartianCore Assistant** is the backend of an intelligent chatbot designed to support daily life in a Martian colony.  
+It receives user queries (for example: *“Is it raining outside?”* or *“What’s the current temperature?”*), selects the most suitable function, and generates clear, actionable responses using **Hugging Face language models (FLAN-T5)**.
 
-> ⚠️ Durante la hackathon usamos **FLAN-T5** porque los portátiles eran poco potentes. Esto hace que los modelos tengan más dificultad interpretando correctamente el lenguaje y generando respuestas con razonamiento propio. Cabe destacar que **el modelo que selecciona la función más adecuada funciona correctamente** incluso en portátiles modestos; sin embargo, para la parte que interpreta los resultados y genera la respuesta final, se necesita un modelo más potente. Hemos probado con modelos más grandes y las respuestas son claramente mejores. Creemos que usando modelos más potentes, los resultados serían mucho más precisos y completos.
+> During the hackathon, we used **FLAN-T5** due to limited laptop performance.  
+> This resulted in reduced language understanding and reasoning capabilities.  
+> However, **the module responsible for selecting the most appropriate function works reliably**, even on modest hardware.  
+> The component that interprets results and formulates the final response, on the other hand, requires a more powerful model.  
+> Tests with larger models have shown **significantly better and more complete answers**, suggesting that with NASA-level resources, results could be far more accurate and comprehensive.
 
-The backend is developed in Python using Flask and leverages Hugging Face models for natural language processing. We used relatively lightweight models due to limited resources during the hackathon, but tests run with more powerful models produced significantly better results. The goal, with NASA’s resources, would be to train a specialized model tailored for this specific task.
-The system is based on a modular design with a set of functions that process different types of data. One ML model determines which functions are relevant according to the user’s query, and another interprets the results together with the user’s request to generate clear and actionable responses. This modular design allows new functions to be easily added as new challenges or data arise.
-In other words, the system consists of two main modules: the first selects the most optimal tools from a set of available ones, and the second uses them to provide accurate yet simple responses to the user.
-The idea is that the functions accessible to the model perform the complex calculations themselves—such as measuring temperature through sensors, retrieving current resource levels from the database, analyzing local radiation, or predicting upcoming sandstorms. The possibilities are virtually limitless.
-The crucial part is that, since we know ML models are probabilistic and not well-suited for performing precise calculations, they act only as interpreters. The functions from the system’s catalog handle the complex computations, while the ML model simply “translates” them into a more understandable form for the user. Therefore, the model does not require extremely exhaustive or specialized training—it only needs to understand human language well and explain results clearly, allowing it to generalize to new functions without needing retraining.
+---
 
-El **frontend** del proyecto se encuentra aquí:  
+## Overview
+
+The backend is developed in **Python** using **Flask** and leverages **Hugging Face** models for natural language processing.  
+We used relatively lightweight models due to limited resources during the hackathon, but experiments with more powerful ones yielded much better results.  
+Our long-term goal, with NASA’s resources, is to **train a specialized model** tailored specifically for Martian operational needs.
+
+The system follows a **modular design**, composed of multiple functions that process different types of data.  
+One ML model determines which functions are relevant to the user’s query, and another interprets the outputs together with the request to produce **clear, concise, and useful responses**.  
+This modular structure allows new capabilities to be added easily as new data sources or operational challenges emerge.
+
+In simpler terms, the system is built around **two core modules**:
+1. **Selector Module** – Chooses the most optimal tools from a set of available ones.  
+2. **Interpreter Module** – Executes those tools and generates accurate yet easily understandable responses for the user.
+
+The idea is that the functions accessible to the model handle all the complex computations — for example:
+- Measuring temperature from environmental sensors  
+- Retrieving resource levels from the colony’s database  
+- Analyzing local radiation  
+- Predicting incoming sandstorms  
+
+The possibilities are virtually limitless.
+
+Since ML models are **probabilistic** and not ideal for precise calculations, they act only as **interpreters**.  
+The functions in the system’s catalog perform the heavy computational tasks, while the ML model simply “translates” the outputs into human-readable responses.  
+This approach means the model doesn’t require extensive or highly specialized training — it only needs strong language understanding and explanation skills, enabling it to **generalize to new functions without retraining**.
+
+---
+
+## Frontend
+
+The **frontend** for this project can be found here:  
 [hackaton_nasa (frontend)](https://github.com/sebasgit27/hackaton_nasa)
+
+It features an interactive web interface built with **React**, allowing users to chat with the assistant, explore its capabilities, and receive responses in a friendly and intuitive way.
 
 ---
 
